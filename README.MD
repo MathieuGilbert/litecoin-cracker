@@ -1,10 +1,21 @@
-git clone https://github.com/MathieuGilbert/cracker.git
-cd cracker
-git clone https://github.com/litecoin-project/litecoin.git
-./litecoin/src/litecoind
+You should be able to crack the included wallet file.
+
+`git clone https://github.com/MathieuGilbert/cracker.git`
+
+`cd cracker`
+
+`git clone https://github.com/litecoin-project/litecoin.git`
+
+`cp wallet.dat litecoin/`
+
+`./litecoin/src/litecoind`
+
 *new tab*
-cp wallet.dat litecoin/
-cd litecoin/src
-irb
-require '../crack.rb'
-Crack.new(['seven', 'eight', 'nine']).run
+
+`cd litecoin/src`
+
+`irb`
+
+`require '../crack.rb'`
+
+`Crack.new(['seven', 'eight', 'nine']).run`
