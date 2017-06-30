@@ -1,21 +1,27 @@
+***Try it out***
+
 You should be able to crack the included wallet file.
 
-`git clone https://github.com/MathieuGilbert/cracker.git`
+  cd <litecoin_path>
+  git clone https://github.com/litecoin-project/litecoin.git
 
-`cd cracker`
+Build Litecoin core (https://github.com/litecoin-project/litecoin/blob/master/doc/build-osx.md)
 
-`git clone https://github.com/litecoin-project/litecoin.git`
+  ./<litecoin_path>/litecoin/src/litecoind
 
-`cp wallet.dat litecoin/`
+New tab
 
-`./litecoin/src/litecoind`
+  cd <code_path>
+  git clone https://github.com/MathieuGilbert/litecoin-cracker.git
+  cd litecoin-cracker
+  ln -s <litecoin_path>/litecoin/src/litecoin-cli litecoin-cli
 
-*new tab*
+  irb
 
-`cd litecoin/src`
+  > require './crack'
+  > crack = Crack.new(['seven', 'eight', 'nine']).generate_password_list_file
+  > crack.run_from_file('passwords-seveneightnine.txt')
 
-`irb`
-
-`require '../crack.rb'`
-
-`Crack.new(['seven', 'eight', 'nine']).run`
+  > require './multicrack'
+  > Multicrack.new.run
+  > Crack.new.run_from_file('passwords-foesevennineeight.txt')
