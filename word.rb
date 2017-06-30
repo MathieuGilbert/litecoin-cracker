@@ -21,7 +21,6 @@ class Word
 
   def explode
     split(word_array.first)
-
     self.word_array.map { |word| word.join '' }
   end
 
@@ -87,4 +86,5 @@ class Word
       end
     end
   end
+
 end

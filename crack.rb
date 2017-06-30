@@ -1,11 +1,11 @@
-load '~/src/cracker/word.rb'
+load 'word.rb'
 
 class Crack
   attr_accessor :passphrase, :password_list, :found, :start_time
 
   def initialize(passphrase = nil)
     # words in this order
-    self.passphrase = passphrase || ['one', 'two', 'three']
+    self.passphrase = passphrase || ['s3ven', 'eight', 'nine']
   end
 
   def generate_password_list_file
@@ -63,7 +63,7 @@ class Crack
   end
 
   def attempt(phrase, count)
-    update_progress(phrase, count)
+    update_progress(phrase, count) if count % 600 == 0
 
     system("./litecoin-cli", "walletpassphrase", phrase, "1", err: File::NULL)
 
@@ -75,7 +75,7 @@ class Crack
       self.found = true
       return
     when 127
-      puts "litecoin-cli not found in current dir"
+      puts "litecoin-cli not found. Are you missing a symlink?"
     end
   end
 
@@ -111,4 +111,5 @@ class Crack
       part.round.to_s.rjust(2, '0')
     end.join ':'
   end
+
 end
